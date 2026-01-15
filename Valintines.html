@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Be My Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Segoe UI', cursive;
+    text-align: center;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+h1 {
+    font-size: 3.5em;
+    margin-top: 40px;
+    animation: fadeIn 2s ease-in-out;
+}
+h2 {
+    margin-top: 30px;
+    font-size: 2.3em;
+}
+p {
+    font-size: 1.4em;
+    max-width: 800px;
+    margin: 20px auto;
+    animation: fadeIn 3s ease-in-out;
+}
+
+/* Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.gallery img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.4s;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Envelope */
+.envelope-section {
+    margin-top: 80px;
+}
+.envelope {
+    position: relative;
+    width: 260px;
+    height: 170px;
+    background: #ff4d6d;
+    margin: 0 auto;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 85px solid #ff758f;
+}
+
+/* Overlay for opened envelope */
+#envelopeOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 80, 110, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: white;
+}
+
+#envelopeOverlay .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5em;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    user-select: none;
+    transition: background 0.3s;
+}
+#envelopeOverlay .close-btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+#envelopeOverlay h2 {
+    margin-top: 0;
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', cursive;
+}
+
+#envelopeOverlay .photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+#envelopeOverlay .photos img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;           /* Keep aspect ratio */
+    border-radius: 20px;
+    transition: transform 0.4s;
+    cursor: pointer;
+    object-fit: contain;    /* Ensure image fits container without stretching */
+}
+
+/* Love paragraph inside envelope */
+#envelopeOverlay .love-paragraph {
+    max-width: 800px;
+    margin: 30px auto;
+    font-size: 1.4em;
+    line-height: 1.7em;
+    text-align: center;
+    color: #fff;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 70px;
+}
+button {
+    padding: 15px 35px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+    position: relative;
+}
+.yes {
+    background: #ff4d6d;
+    color: white;
+}
+.yes:hover {
+    background: #ff1e56;
+    transform: scale(1.1);
+}
+.no {
+    background: white;
+    color: #ff4d6d;
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 24px;
+    animation: float 6s infinite ease-in;
+}
+@keyframes float {
+    from {transform: translateY(0); opacity: 1;}
+    to {transform: translateY(-100vh); opacity: 0;}
+}
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 Will You Be My Valentine? 💖</h1>
+
+<p>
+From the moment you walked into my life,  
+the universe felt a little brighter ✨  
+The boring days became softer,  
+and my heart… well, it learned your name 💕
+</p>
+
+<p>
+I don’t promise perfection —  
+but I promise effort, laughter at bad jokes,  
+warm hugs, stolen glances, and love that shows up every day.
+</p>
+
+<!-- Your photos gallery -->
+<div class="gallery">
+    <img src="GF 1.jpeg" alt="Photo 1">
+    <img src="GF 2.jpeg" alt="Photo 2">
+    <img src="GF 3.jpeg" alt="Photo 3">
+    <img src="GF 4.jpeg" alt="Photo 4">
+</div>
+
+<h2>💌 Envelope of Memories 💌</h2>
+<p>Go on… open it 👀</p>
+
+<!-- Envelope section -->
+<div class="envelope-section">
+    <div class="envelope" onclick="openEnvelopeOverlay()"></div>
+</div>
+
+<!-- Full screen overlay for envelope open -->
+<div id="envelopeOverlay">
+    <div class="close-btn" onclick="closeEnvelopeOverlay()" title="Close Envelope">×</div>
+    <h2>Our Memories 💌</h2>
+
+    <!-- First half of photos -->
+    <div class="photos">
+        <img src="GF 1.jpeg" alt="Letter Photo 1" />
+        <img src="GF 2.jpeg" alt="Letter Photo 2" />
+        <img src="GF 3.jpeg" alt="Letter Photo 3" />
+        <img src="GF 4.jpeg" alt="Letter Photo 4" />
+        <img src="GF 5.jpeg" alt="Letter Photo 5" />
+        <img src="GF 6.jpeg" alt="Letter Photo 6" />
+    </div>
+
+    <!-- Love paragraph -->
+    <div class="love-paragraph">
+        "From the moment you entered my life, every piece of me changed without me even realizing it. The world felt louder when you laughed, softer when you smiled, and somehow infinite when I looked into your eyes. Loving you isn’t just a choice—it’s a force that pulls me in, that makes me want to be better, braver, and more alive every single day. You are the quiet in my chaos, the fire in my soul, and the home my heart never knew it was searching for. I don’t just love you; I am irrevocably, endlessly, and completely yours, and I will spend every breath proving that you are the most extraordinary part of my life."
+    </div>
+
+    <!-- Second half of photos -->
+    <div class="photos">
+        <img src="GF 7.jpeg" alt="Letter Photo 7" />
+        <img src="GF 8.jpeg" alt="Letter Photo 8" />
+        <img src="GF 9.jpeg" alt="Letter Photo 9" />
+        <img src="GF 10.jpeg" alt="Letter Photo 10" />
+        <img src="GF 11.jpeg" alt="Letter Photo 11" />
+        <img src="GF 12.jpeg" alt="Letter Photo 12" />
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="yes" onclick="yesClicked()">YES 💘</button>
+    <button class="no" onclick="noClicked(this)">No 😢</button>
+</div>
+
+<script>
+let noCount = 0;
+
+function yesClicked() {
+    document.body.innerHTML = `
+        <h1>💞 YOU SAID YES 💞</h1>
+        <p>
+        I KNEW IT 😌❤️<br><br>
+        Thank you for choosing me —  
+        I promise to choose you every single day.
+        </p>
+        <h2>Happy Valentine’s Day 💐</h2>
+        <p>Now come here… hug required 🤗</p>
+    `;
+}
+
+function noClicked(btn) {
+    noCount++;
+
+    const messages = [
+        "Are you sure? 😏",
+        "Hmm… try again 💕",
+        "That button is suspicious 👀",
+        "Nice try 😌",
+        "Your heart says YES though ❤️",
+        "Okay okay… I surrender 😳 (just kidding)",
+        "Plot twist: You love me 💘",
+        "This button is lying 😤"
+    ];
+
+    btn.innerText = messages[Math.min(noCount, messages.length - 1)];
+
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "vw";
+    btn.style.top = Math.random() * 80 + "vh";
+    btn.style.transform = "scale(" + (1 - noCount * 0.08) + ")";
+
+    if (noCount > 7) {
+        btn.innerText = "YES 💘";
+        btn.className = "yes";
+        btn.onclick = yesClicked;
+    }
+}
+
+function openEnvelopeOverlay() {
+    document.getElementById('envelopeOverlay').style.display = 'block';
+}
+
+function closeEnvelopeOverlay() {
+    document.getElementById('envelopeOverlay').style.display = 'none';
+}
+
+// Floating hearts animation
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>

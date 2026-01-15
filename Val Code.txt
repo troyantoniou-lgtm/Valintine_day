@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', cursive;
+        text-align: center;
+        overflow-x: hidden;
+        color: #fff;
+    }
+
+    h1 {
+        font-size: 3.5em;
+        margin-top: 40px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+        font-size: 1.4em;
+        max-width: 700px;
+        margin: 20px auto;
+        animation: fadeIn 3s ease-in-out;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .gallery img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: transform 0.4s;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1);
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 15px 35px;
+        font-size: 1.3em;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    .yes:hover {
+        background: #ff1e56;
+        transform: scale(1.1);
+    }
+
+    .no {
+        background: white;
+        color: #ff4d6d;
+    }
+
+    .no:hover {
+        transform: translateX(50px);
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -10px;
+        font-size: 24px;
+        animation: float 6s infinite ease-in;
+        opacity: 0.8;
+    }
+
+    @keyframes float {
+        0% {transform: translateY(0); opacity: 1;}
+        100% {transform: translateY(-100vh); opacity: 0;}
+    }
+</style>
+</head>
+
+<body>
+
+<h1>💖 Will You Be My Valentine? 💖</h1>
+
+<p>
+From the moment you walked into my life, everything felt warmer, brighter,
+and happier. You make my heart smile in ways I never knew were possible.
+This Valentine’s Day wouldn’t be complete without you 💕
+</p>
+
+<div class="gallery">
+    <!-- Replace these image links with your own photos -->
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+</div>
+
+<div class="buttons">
+    <button class="yes" onclick="yesClicked()">YES 💘</button>
+    <button class="no">No 😢</button>
+</div>
+
+<script>
+    function yesClicked() {
+        document.body.innerHTML = `
+            <h1>💞 YAYYYYY 💞</h1>
+            <p>
+            You just made me the happiest person alive ❤️<br>
+            I can’t wait to make beautiful memories with you.
+            </p>
+            <h2>Happy Valentine’s Day 💐</h2>
+        `;
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 400);
+</script>
+
+</body>>
+
+</html>
